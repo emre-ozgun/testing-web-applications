@@ -1,8 +1,9 @@
 // price is stored as 'cent' -> currrency converter -> display accordingly
-import React from 'react';
 
-const formatPrice = () => {
-	return <div>price formatter</div>;
+export const formatPrice = (num) => {
+	let dollars = num / 100;
+	return dollars.toLocaleString('en-US', {
+		style: 'currency',
+		currency: 'USD',
+	});
 };
-
-export default formatPrice;

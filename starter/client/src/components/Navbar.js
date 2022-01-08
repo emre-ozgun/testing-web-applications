@@ -7,6 +7,9 @@ const Navbar = () => {
 
 	const [isAuth, setIsAuth] = useState(true);
 
+	// this must use global context, useState is placeholder!
+	const [cartAmount, setCartAmount] = React.useState(0);
+
 	return (
 		<header>
 			<nav>
@@ -20,7 +23,9 @@ const Navbar = () => {
 				</div>
 
 				<div className='cta'>
-					<Link to='/cart'>Cart</Link>
+					<Link to='/cart'>
+						Cart (<span className='cart-amount'>{cartAmount}</span>)
+					</Link>
 					<button className='login-btn'>Login</button>
 				</div>
 			</nav>

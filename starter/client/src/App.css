@@ -218,6 +218,103 @@ nav > div > a {
 
 /* end of landing page */
 
-/* product container */
+/* products page  */
 
-/* end of product container */
+.products {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 2rem;
+}
+
+.product-container img {
+	width: 100%;
+	max-width: 300px;
+}
+
+.product-container {
+	margin: 0 auto;
+}
+
+.product-info {
+	display: flex;
+	justify-content: space-between;
+}
+
+.p-name {
+	color: #262626;
+	font-weight: 800;
+	letter-spacing: 2px;
+}
+
+.p-price {
+	font-weight: 800;
+	letter-spacing: 1px;
+	color: grey;
+}
+
+.products {
+	padding: 2rem 1rem;
+}
+
+/* end of products page   */
+
+/* util styles - loading */
+
+.loading {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
+
+.spinner {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
+	border: 3px solid #fafafa;
+	border-top: 3px solid #262626;
+	border-right: 3px solid #262626;
+	animation: spin;
+	-webkit-animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0);
+		-webkit-transform: rotate(0);
+		-moz-transform: rotate(0);
+		-ms-transform: rotate(0);
+		-o-transform: rotate(0);
+	}
+	100% {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+	}
+}
+
+/* single product page */
+
+/* end of single product page */
+
+/* cart page */
+
+/* end of cart page */
+
+/* cart amount - NAVBAR */
+.cart-amount {
+	font-weight: 900;
+}
+
+/* media queries */
+
+@media screen and (max-width: 550px) {
+	.login-btn {
+		display: none;
+	}
+}
