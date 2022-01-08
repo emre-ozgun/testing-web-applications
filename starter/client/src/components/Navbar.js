@@ -1,12 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const Navbar = () => {
 	// checkout link -> isAuth ? <Link to='/checkout/> : 'do not render'
-	//
+
+	const [isAuth, setIsAuth] = useState(true);
 
 	return (
 		<header>
-			<nav>NAV</nav>
+			<nav>
+				<div className='logo'>
+					<Link to='/'>Lustro</Link>
+				</div>
+				<div className='nav-links'>
+					<Link to='/'>Home</Link>
+					<Link to='/products'>Products</Link>
+					{isAuth && <Link to='/checkout'>Checkout</Link>}
+				</div>
+
+				<div className='cta'>
+					<Link to='/cart'>Cart</Link>
+					<button className='login-btn'>Login</button>
+				</div>
+			</nav>
 		</header>
 	);
 };
