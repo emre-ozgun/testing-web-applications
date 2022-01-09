@@ -6,6 +6,7 @@ export const CContext = createContext();
 export const CartContext = ({ children }) => {
 	const [cart, setCart] = useState([]);
 	const [cartChangeFlag, setCartChangeFlag] = useState(false);
+	// const [cartLoader, setCartLoader] = useState(false);
 
 	useEffect(() => {
 		getCartItems();
@@ -34,9 +35,38 @@ export const CartContext = ({ children }) => {
 		}
 	};
 
+	const updateCartItems = async (id, amount) => {
+		// POST to cart
+		const res = await axios.patch(`http://localhost:5000/cart/update`, {
+			id,
+			amount,
+		});
+
+		const finalUpdatedCart = res.data.cart;
+
+		setCart(finalUpdatedCart);
+	};
+
+	const updateCartFromCart = (id, amount) => {
+		updateCartItems(id, amount);
+	};
+
+	const clearShoppingCart = async () => {
+		const res = await axios.delete('http://localhost:5000/cart/clear');
+
+		setCart(res.data.cart);
+	};
+
 	return (
 		<CContext.Provider
-			value={{ handleAddToCart, cart, cartChangeFlag, setCartChangeFlag }}
+			value={{
+				handleAddToCart,
+				cart,
+				cartChangeFlag,
+				setCartChangeFlag,
+				updateCartFromCart,
+				clearShoppingCart,
+			}}
 		>
 			{children}
 		</CContext.Provider>

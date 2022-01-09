@@ -1,7 +1,39 @@
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { formatPrice } from '../utils/formatPrice';
+import { CContext } from '../context/CartContext';
 
-const CartItem = ({ url, name, price, amount }) => {
+const CartItem = ({ url, name, price, amount, id, stock }) => {
+	const { updateCartFromCart } = useContext(CContext);
+
+	const [cartQuantity, setCartQuantity] = useState(amount);
+
+	useEffect(() => {
+		updateCartFromCart(id, cartQuantity);
+	}, [cartQuantity]);
+
+	// decrementCartFromCart
+	// incrementCartFromCart
+
+	const incrementQuantity = () => {
+		setCartQuantity((prev) => {
+			if (prev + 1 > stock) {
+				return stock;
+			} else {
+				return prev + 1;
+			}
+		});
+	};
+
+	const decrementQuantity = () => {
+		setCartQuantity((prev) => {
+			if (prev - 1 < 1) {
+				return 0;
+			} else {
+				return prev - 1;
+			}
+		});
+	};
+
 	return (
 		<>
 			<article className='single-cart-item'>
@@ -13,12 +45,12 @@ const CartItem = ({ url, name, price, amount }) => {
 					<p className='p-price lighter'>{formatPrice(price)}</p>
 				</div>
 				<div className='cart-item-quantity'>
-					<button>-</button>
-					<h2>{amount}</h2>
-					<button>+</button>
+					<button onClick={decrementQuantity}>-</button>
+					<h2>{cartQuantity}</h2>
+					<button onClick={incrementQuantity}>+</button>
 				</div>
 				<div className='cart-item-subtotal'>
-					<p className='p-price light'>{formatPrice(price * amount)}</p>
+					<p className='p-price light'>{formatPrice(price * cartQuantity)}</p>
 				</div>
 			</article>
 			<div className='separator cart-separator'></div>

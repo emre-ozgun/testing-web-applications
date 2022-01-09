@@ -29,7 +29,9 @@ const Navbar = () => {
 					<Link to='/cart'>
 						Cart (<span className='cart-amount'>{cartAmount}</span>)
 					</Link>
-					<button className='login-btn'>Login</button>
+					<Link to='/user/login' className='login-btn'>
+						Login
+					</Link>
 				</div>
 			</nav>
 		</header>
