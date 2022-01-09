@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { CContext } from '../context/CartContext';
+import { useHistory } from 'react-router-dom';
 
 const AddToCart = ({ stock, available, idToBeAddedToCart }) => {
+	const history = useHistory();
+
 	const [cartAmount, setCartAmount] = React.useState(1);
 
-	const handleCart = () => {
-		//POST -> to server => use idToBeAddedToCart
+	const { handleAddToCart, cartChangeFlag } = useContext(CContext);
 
-		if (!available) {
-			return;
+	useEffect(() => {
+		if (cartChangeFlag) {
+			history.push('/cart');
 		}
-		// from cartContext
-	};
+	});
 
 	const decrementAmount = () => {
 		setCartAmount((prev) => {
@@ -43,7 +46,7 @@ const AddToCart = ({ stock, available, idToBeAddedToCart }) => {
 			</div>
 			<button
 				className='add-to-cart-btn'
-				onClick={handleCart}
+				onClick={() => handleAddToCart(idToBeAddedToCart, cartAmount)}
 				disabled={!available && 'disabled'}
 			>
 				ADD TO CART

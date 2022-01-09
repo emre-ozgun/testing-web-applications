@@ -48,6 +48,9 @@ nav {
 
 .nav-links {
 	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	justify-self: center;
 }
 
 nav > div > a {
@@ -318,7 +321,7 @@ nav > div > a {
 	padding: 2rem;
 	display: flex;
 	flex-direction: column;
-	align-items: start;
+	align-items: flex-start;
 	gap: 0.75rem;
 }
 .single-product-image {
@@ -367,12 +370,14 @@ nav > div > a {
 .cart-toggle {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	gap: 0.5rem;
 }
 
 .cart-toggle > button {
 	font-weight: 900;
 	font-size: 2rem;
+	user-select: none;
 }
 .cart-toggle > button:hover {
 	color: #262626ec;
@@ -385,6 +390,22 @@ nav > div > a {
 /* cart amount - NAVBAR */
 .cart-amount {
 	font-weight: 900;
+}
+
+.empty-cart {
+	text-align: center;
+}
+
+.empty-cart h1 {
+	margin-bottom: 1rem;
+}
+
+.empty-cart > a {
+	background-color: #262626;
+	color: #fafafa;
+	padding: 9px 18px;
+	text-decoration: none;
+	font-weight: 700;
 }
 
 /* media queries */

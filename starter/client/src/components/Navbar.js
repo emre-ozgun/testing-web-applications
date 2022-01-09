@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { CContext } from '../context/CartContext';
 
 const Navbar = () => {
 	// checkout link -> isAuth ? <Link to='/checkout/> : 'do not render'
@@ -8,7 +9,9 @@ const Navbar = () => {
 	const [isAuth, setIsAuth] = useState(true);
 
 	// this must use global context, useState is placeholder!
-	const [cartAmount, setCartAmount] = React.useState(0);
+	const { cart } = useContext(CContext);
+
+	const cartAmount = cart?.length || 0;
 
 	return (
 		<header>
