@@ -225,6 +225,18 @@ const auth = {
 	admin: { email: 'testadmin@gmail.com', password: 'admin123' },
 };
 
+// Authenticate User
+
+app.post('/user/login', (req, res) => {
+	const { email, password } = req.body;
+
+	if (email === auth.user.email && password === auth.user.password) {
+		res.json({ authStatus: true });
+	} else {
+		res.json({ authStatus: false });
+	}
+});
+
 //GET all products
 app.get('/products', (req, res) => {
 	res.json({ PRODUCTS });
