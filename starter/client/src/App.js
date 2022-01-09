@@ -1,6 +1,5 @@
 import './App.css';
 
-import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
@@ -8,6 +7,7 @@ import ProductsPage from './pages/ProductsPage';
 import SingleProductPage from './pages/SingleProductPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
+import UserLoginPage from './pages/UserLoginPage';
 
 function App() {
 	//auth provider -> isAuth && checkout
@@ -35,6 +35,9 @@ function App() {
 					</Route>
 					<Route path='/products/:id' exact>
 						<SingleProductPage />
+					</Route>
+					<Route path='/user/login' exact>
+						<UserLoginPage />
 					</Route>
 				</Switch>
 			</Router>

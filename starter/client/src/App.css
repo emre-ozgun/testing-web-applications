@@ -89,6 +89,14 @@ nav > div > a {
 	color: #fafafa;
 }
 
+.logout-btn {
+	color: #262626;
+	background-color: transparent;
+}
+.logout-btn:hover {
+	background-color: transparent;
+}
+
 .section {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
@@ -531,6 +539,66 @@ nav > div > a {
 	text-decoration: none;
 	font-weight: 700;
 }
+
+/* user login form */
+
+.user-login-page {
+	padding-top: 6rem;
+	display: grid;
+	place-items: center;
+}
+
+.user-login-form {
+	transform: scale(1.2);
+	padding: 1.25rem;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: start;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	gap: 1rem;
+	-webkit-transform: scale(1.2);
+	-moz-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	-o-transform: scale(1.2);
+}
+
+.form-control {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+	letter-spacing: 1px;
+}
+
+.form-input {
+	outline: none;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	padding: 9px 18px 9px 4px;
+	background-color: transparent;
+}
+
+.form-input:focus {
+	border: 1px solid #262626;
+}
+
+.user-login-form > button {
+	margin-top: 1rem;
+	color: #fafafa;
+	background-color: #262626;
+	padding: 9px 18px;
+	width: 100%;
+	font-weight: 800;
+	letter-spacing: 1px;
+}
+.user-login-form > button:hover {
+	background-color: #262626d0;
+}
+
+.login-error {
+	font-size: 14px;
+}
+
+/* end of user login form */
 
 /* error util */
 

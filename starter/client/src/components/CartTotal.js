@@ -2,13 +2,10 @@ import React, { useContext } from 'react';
 import { calculateCartTotal } from '../utils/calculateCartTotal';
 import { formatPrice } from '../utils/formatPrice';
 import { Link } from 'react-router-dom';
+import { AContext } from '../context/AuthContext';
 
 const CartTotal = ({ cart }) => {
-	// const { cart } = useContext(CContext);
-
-	// isAuth === true -> proceed to check out
-
-	// isAuth === false -> You must login to proceed
+	const { isAuthUser } = useContext(AContext);
 
 	return (
 		<article className='cart-total'>
@@ -16,7 +13,11 @@ const CartTotal = ({ cart }) => {
 				<h2>Total :</h2>
 				<h3>{formatPrice(calculateCartTotal(cart))}</h3>
 			</div>
-			<Link to='/checkout'>CHECKOUT</Link>
+			{isAuthUser ? (
+				<Link to='/checkout'>CHECKOUT</Link>
+			) : (
+				<Link to='/user/login'>LOGIN TO PROCEED</Link>
+			)}
 		</article>
 	);
 };
