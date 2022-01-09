@@ -217,7 +217,7 @@ const PRODUCTS = [
 	},
 ];
 
-const cart = [];
+let cart = [];
 const placed_orders = [];
 
 const auth = {
@@ -268,7 +268,9 @@ app.post('/cart/:id', (req, res) => {
 			}
 		});
 
-		res.status(200).json(newCart);
+		cart = newCart;
+
+		res.status(200).json(cart);
 	} else {
 		cart.push({ ...cartItem, amount });
 		res.status(201).json(cart);
@@ -279,6 +281,35 @@ app.post('/cart/:id', (req, res) => {
 
 app.get('/cart', (req, res) => {
 	res.json(cart);
+});
+
+// UPDATE cart items from cartPage
+
+app.patch('/cart/update', (req, res) => {
+	const { id, amount } = req.body;
+
+	const updatedCart = cart.map((c) => {
+		if (c.id === id) {
+			if (amount === 0) {
+				return null;
+			} else {
+				return { ...c, amount };
+			}
+		} else {
+			return c;
+		}
+	});
+
+	cart = updatedCart.filter(Boolean);
+
+	res.json({ cart });
+});
+
+// EMPTY CART
+
+app.delete('/cart/clear', (req, res) => {
+	cart = [];
+	res.json({ cart });
 });
 
 app.listen(5000, () => console.log('listening on port:5000'));
