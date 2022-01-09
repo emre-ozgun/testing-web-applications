@@ -1,14 +1,102 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import Loading from '../components/Loading';
+import Error from '../components/Error';
+import axios from 'axios';
+import AddToCart from '../components/AddToCart';
+import { formatPrice } from '../utils/formatPrice';
 
 const SingleProductPage = () => {
-	//read product id from params
-	//get single product and display details
-	//add to cart component with amount toggle
-	//after amount toggle -> add product to cart -> navigate to cartPage
+	const { id } = useParams();
 
-	//useEffect + listener on 'add to cart'
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState('');
+	const [product, setProduct] = useState({});
 
-	return <div>SingleProductPage</div>;
+	const fetchSingleProduct = async () => {
+		setIsLoading(true);
+
+		try {
+			const res = await axios.get(`http://localhost:5000/products/${id}`);
+			const singleProduct = res.data.product;
+
+			if (!singleProduct) {
+				setIsLoading(false);
+				setError(`The product you're looking for cannot be found`);
+			}
+			setIsLoading(false);
+			setProduct(singleProduct);
+		} catch (error) {
+			setIsLoading(false);
+			setError('There was an error loading your product...');
+		}
+	};
+
+	useEffect(() => {
+		fetchSingleProduct();
+	}, [id]);
+
+	if (isLoading) {
+		return <Loading />;
+	}
+
+	if (error) {
+		return (
+			<>
+				<Error msg={error}></Error>
+			</>
+		);
+	}
+
+	const product_id = product.id;
+
+	const {
+		url,
+		name,
+		price,
+		description,
+		stock,
+		available,
+		company,
+		stars,
+		reviews,
+	} = product;
+
+	return (
+		<>
+			<section className='single-product section section-center'>
+				<article className='single-product-image'>
+					<img src={url} alt={name} />
+				</article>
+				<article className='single-product-info'>
+					<h1>{name}</h1>
+					<h2>{formatPrice(price)}</h2>
+					<h5>
+						{Math.floor((stars / 5) * 100)}% - ({reviews} reviews)
+					</h5>
+					<p className='single-product-desc'>{description}</p>
+					<div className='single-footer-info'>
+						<h6>Company: </h6>
+						<p>{company}</p>
+					</div>
+					<div className='single-footer-info'>
+						<h6>In Stock: </h6>
+						<p>{available ? 'Available' : 'Out of Stock'}</p>
+					</div>
+					{available && (
+						<>
+							<div className='separator'></div>
+							<AddToCart
+								stock={stock}
+								available={available}
+								idToBeAddedToCart={product_id}
+							/>
+						</>
+					)}
+				</article>
+			</section>
+		</>
+	);
 };
 
 export default SingleProductPage;
