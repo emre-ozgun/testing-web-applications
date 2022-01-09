@@ -1,5 +1,10 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
+
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 const PRODUCTS = [
 	{
@@ -69,7 +74,7 @@ const PRODUCTS = [
 	},
 	{
 		id: 'fff111',
-		url: 'https://picsum.photos/id/163/400/300',
+		url: 'https://picsum.photos/id/530/400/300',
 		name: 'Mock 6',
 		price: 2500,
 		description:
@@ -220,8 +225,60 @@ const auth = {
 	admin: { email: 'testadmin@gmail.com', password: 'admin123' },
 };
 
+//GET all products
 app.get('/products', (req, res) => {
-	res.json({ products });
+	res.json({ PRODUCTS });
+});
+
+// GET specific product by id
+app.get('/products/:id', (req, res) => {
+	const product_id = req.params.id;
+	const product = PRODUCTS.find((p) => p.id === product_id);
+
+	if (!product) {
+		res.json({ msg: `The product you're looking for cannot be found...` });
+	} else {
+		res.json({ product });
+	}
+});
+
+// POST to cart
+
+app.post('/cart/:id', (req, res) => {
+	const { id, amount } = req.body;
+
+	const cartItem = PRODUCTS.find((p) => p.id === id);
+
+	const isItemAlreadyInCart = cart.some((p) => p.id === id);
+
+	if (isItemAlreadyInCart) {
+		const itemInCart = cart.find((c) => c.id === id);
+
+		if (itemInCart.amount + amount >= cartItem.stock) {
+			itemInCart.amount = cartItem.stock;
+		} else {
+			itemInCart.amount += amount;
+		}
+
+		const newCart = cart.map((c) => {
+			if (c.id === itemInCart.id) {
+				return itemInCart;
+			} else {
+				return c;
+			}
+		});
+
+		res.status(200).json(newCart);
+	} else {
+		cart.push({ ...cartItem, amount });
+		res.status(201).json(cart);
+	}
+});
+
+// GET items from cart
+
+app.get('/cart', (req, res) => {
+	res.json(cart);
 });
 
 app.listen(5000, () => console.log('listening on port:5000'));
