@@ -13,7 +13,7 @@ npm install && npm run
 ```
 3. Navigate to server directory (../starter/server)
 ```sh
-node index
+npm install && node index
 ```
 
 > USE: `email:testuser@gmail.com - password:test123` to login and place orders. (This is the only authenticated user)
