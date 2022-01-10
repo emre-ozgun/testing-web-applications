@@ -3,6 +3,8 @@ import axios from 'axios';
 
 export const CContext = createContext();
 
+const serverPort = process.env.REACT_APP_PORT;
+
 export const CartContext = ({ children }) => {
 	const [cart, setCart] = useState([]);
 	const [cartChangeFlag, setCartChangeFlag] = useState(false);
@@ -14,7 +16,7 @@ export const CartContext = ({ children }) => {
 
 	const postToCart = async (id, amount) => {
 		// POST to cart
-		const res = await axios.post(`http://localhost:5000/cart/${id}`, {
+		const res = await axios.post(`http://localhost:${serverPort}/cart/${id}`, {
 			id,
 			amount,
 		});
@@ -24,7 +26,7 @@ export const CartContext = ({ children }) => {
 	};
 
 	const getCartItems = async () => {
-		const res = await axios.get('http://localhost:5000/cart');
+		const res = await axios.get(`http://localhost:${serverPort}/cart`);
 		setCart(res.data || []);
 	};
 
@@ -37,10 +39,13 @@ export const CartContext = ({ children }) => {
 
 	const updateCartItems = async (id, amount) => {
 		// POST to cart
-		const res = await axios.patch(`http://localhost:5000/cart/update`, {
-			id,
-			amount,
-		});
+		const res = await axios.patch(
+			`http://localhost:${serverPort}/cart/update`,
+			{
+				id,
+				amount,
+			}
+		);
 
 		const finalUpdatedCart = res.data.cart;
 
@@ -52,13 +57,13 @@ export const CartContext = ({ children }) => {
 	};
 
 	const clearShoppingCart = async () => {
-		const res = await axios.delete('http://localhost:5000/cart/clear');
+		const res = await axios.delete(`http://localhost:${serverPort}/cart/clear`);
 
 		setCart(res.data.cart);
 	};
 
 	const handlePlaceOrder = async () => {
-		const res = await axios.get('http://localhost:5000/placeorder');
+		const res = await axios.get(`http://localhost:${serverPort}/placeorder`);
 
 		if (res.data.orderStatus) {
 			setCart([]);

@@ -350,7 +350,9 @@ app.delete('/cart/clear', (req, res) => {
 	res.json({ cart });
 });
 
-app.listen(6969, () => console.log('listening on port:5000'));
+const PORT = 6969;
+
+app.listen(PORT, () => console.log(`listening on port => ${PORT}`));
 
 // endpoints
 

@@ -5,6 +5,8 @@ import Product from '../components/Product';
 import Loading from '../components/Loading';
 import Error from '../components/Error';
 
+const serverPort = process.env.REACT_APP_PORT;
+
 const ProductsPage = () => {
 	const [products, setProducts] = useState([]);
 
@@ -14,7 +16,9 @@ const ProductsPage = () => {
 	const fetchProducts = async () => {
 		try {
 			setIsLoading(true);
-			const productData = await axios.get('http://localhost:5000/products');
+			const productData = await axios.get(
+				`http://localhost:${serverPort}/products`
+			);
 			const productList = productData.data.PRODUCTS;
 			setProducts(productList);
 			setIsLoading(false);

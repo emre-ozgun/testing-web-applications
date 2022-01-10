@@ -3,6 +3,8 @@ import axios from 'axios';
 
 export const AContext = createContext();
 
+const serverPort = process.env.REACT_APP_PORT;
+
 export const AuthContext = ({ children }) => {
 	const [isAuthUser, setIsAuthUser] = useState(false);
 
@@ -16,7 +18,7 @@ export const AuthContext = ({ children }) => {
 	const handleUserLogin = async (email, password) => {
 		setIsLoginLoading(true);
 
-		const res = await axios.post('http://localhost:5000/user/login', {
+		const res = await axios.post(`http://localhost:${serverPort}/user/login`, {
 			email,
 			password,
 		});

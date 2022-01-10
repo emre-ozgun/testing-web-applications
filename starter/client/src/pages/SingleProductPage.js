@@ -6,6 +6,8 @@ import axios from 'axios';
 import AddToCart from '../components/AddToCart';
 import { formatPrice } from '../utils/formatPrice';
 
+const serverPort = process.env.REACT_APP_PORT;
+
 const SingleProductPage = () => {
 	const { id } = useParams();
 
@@ -17,7 +19,9 @@ const SingleProductPage = () => {
 		setIsLoading(true);
 
 		try {
-			const res = await axios.get(`http://localhost:5000/products/${id}`);
+			const res = await axios.get(
+				`http://localhost:${serverPort}/products/${id}`
+			);
 			const singleProduct = res.data.product;
 
 			if (!singleProduct) {
