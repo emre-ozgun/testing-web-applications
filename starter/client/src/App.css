@@ -438,6 +438,7 @@ nav > div > a {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	margin-top: -2rem;
 }
 
 .cart-total {
@@ -493,6 +494,7 @@ nav > div > a {
 	background-color: #262626;
 	color: #fafafa;
 	padding: 9px 18px;
+	font-weight: 800;
 }
 .add-to-cart-btn:hover {
 	background-color: #262626f8;
@@ -600,6 +602,73 @@ nav > div > a {
 
 /* end of user login form */
 
+/* checkout page */
+
+.checkout-main {
+	display: grid;
+	place-items: center;
+	padding-top: 4rem;
+}
+.checkout-inner {
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	padding: 1rem;
+	transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-o-transform: scale(1.1);
+}
+
+.checkout-item {
+	display: flex;
+	margin-bottom: 1.25rem;
+}
+
+.checkout-item > h6 {
+	font-size: 12px;
+	font-weight: 700;
+	color: #acacac;
+	margin-left: auto;
+}
+
+.checkout-cta {
+	margin: 0.5rem 0;
+}
+
+.checkout-cta > h2 {
+	margin: 1.5rem 0;
+}
+
+.checkout-cta > button {
+	background-color: rgb(0, 140, 140);
+	border: 1px solid rgb(0, 140, 140);
+	color: #fafafa;
+	padding: 9px 18px;
+	letter-spacing: 2px;
+	font-weight: 800;
+	width: 100%;
+	font-size: 1.1rem;
+}
+
+.checkout-cta button:hover {
+	opacity: 0.8;
+}
+
+.checkout-cta > .back-to-cart-checkout {
+	margin-top: 1rem;
+	background-color: transparent;
+	color: #262626;
+	border: 1px solid #262626;
+	padding: 9px 18px;
+	letter-spacing: 2px;
+	font-weight: 600;
+	width: 100%;
+	text-decoration: none;
+	text-align: center;
+}
+
+/* end of checkout page */
+
 /* error util */
 
 .error {
@@ -612,14 +681,56 @@ nav > div > a {
 .error > a {
 	background-color: #262626;
 	color: #fafafa;
-	padding: 6px 12px;
+	padding: 9px 18px;
 	text-decoration: none;
+	letter-spacing: 2px;
+	font-weight: 700;
+}
+.error > a:hover {
+	opacity: 0.9;
+}
+
+.order-complete-btn {
+	text-align: center;
+	margin: 0.5rem auto;
+	text-decoration: none;
+	padding: 9px 18px;
+	letter-spacing: 2px;
+	color: #fafafa;
+	background-color: #262626;
+	font-weight: 800;
+}
+.order-complete-btn:hover {
+	text-decoration: none;
+}
+.inner-complete {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.checkout-inner-success {
+	display: grid;
+	justify-content: center;
+	grid-template-columns: 1fr;
+	gap: 1rem;
+}
+.order-success-message {
+	color: rgb(0, 140, 140);
 }
 
 /* media queries */
 
 @media screen and (max-width: 575px) {
 	.login-btn {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 678px) {
+	.cart-page-headers {
+		display: none;
+	}
+	.separator.header {
 		display: none;
 	}
 }

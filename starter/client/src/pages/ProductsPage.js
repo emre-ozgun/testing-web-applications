@@ -40,11 +40,14 @@ const ProductsPage = () => {
 		return <Loading />;
 	}
 
-	//map products..
+	//map products.. - remove products that are out of stock!
+
+	const filteredProducts = products.filter((p) => p.stock !== 0);
+
 	return (
 		<>
 			<main className='products section section-center'>
-				{products?.map((product) => (
+				{filteredProducts?.map((product) => (
 					<Product key={product.id} {...product} />
 				))}
 			</main>

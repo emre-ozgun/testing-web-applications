@@ -6,7 +6,7 @@ export const CContext = createContext();
 export const CartContext = ({ children }) => {
 	const [cart, setCart] = useState([]);
 	const [cartChangeFlag, setCartChangeFlag] = useState(false);
-	// const [cartLoader, setCartLoader] = useState(false);
+	const [orderMessage, setOrderMessage] = useState('');
 
 	useEffect(() => {
 		getCartItems();
@@ -57,6 +57,15 @@ export const CartContext = ({ children }) => {
 		setCart(res.data.cart);
 	};
 
+	const handlePlaceOrder = async () => {
+		const res = await axios.get('http://localhost:5000/placeorder');
+
+		if (res.data.orderStatus) {
+			setCart([]);
+			setOrderMessage('Your payment has been completed.');
+		}
+	};
+
 	return (
 		<CContext.Provider
 			value={{
@@ -66,6 +75,9 @@ export const CartContext = ({ children }) => {
 				setCartChangeFlag,
 				updateCartFromCart,
 				clearShoppingCart,
+				handlePlaceOrder,
+				orderMessage,
+				setOrderMessage,
 			}}
 		>
 			{children}

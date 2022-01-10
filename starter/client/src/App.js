@@ -8,6 +8,7 @@ import SingleProductPage from './pages/SingleProductPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import UserLoginPage from './pages/UserLoginPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
 	//auth provider -> isAuth && checkout
@@ -38,6 +39,9 @@ function App() {
 					</Route>
 					<Route path='/user/login' exact>
 						<UserLoginPage />
+					</Route>
+					<Route path='*'>
+						<NotFoundPage />
 					</Route>
 				</Switch>
 			</Router>

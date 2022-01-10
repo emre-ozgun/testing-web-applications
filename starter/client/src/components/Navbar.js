@@ -25,7 +25,11 @@ const Navbar = () => {
 
 				<div className='cta'>
 					<Link to='/cart'>
-						Cart (<span className='cart-amount'>{cartAmount}</span>)
+						Cart (
+						<span className='cart-amount' style={{ color: 'rgb(0,140,140)' }}>
+							{cartAmount}
+						</span>
+						)
 					</Link>
 					{!isAuthUser ? (
 						<Link to='/user/login' className='login-btn'>

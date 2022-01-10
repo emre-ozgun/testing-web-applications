@@ -30,7 +30,12 @@ const HomePage = () => {
 						twee. Actually venmo hashtag distillery typewriter tofu yr umami.
 						Meditation schlitz celiac, listicle brunch umami snackwave quinoa.
 					</p>
-					<Link to='/products' className='' ref={buttonRef}>
+					<Link
+						to='/products'
+						className=''
+						ref={buttonRef}
+						style={{ letterSpacing: '1px' }}
+					>
 						SHOP NOW
 					</Link>
 				</section>

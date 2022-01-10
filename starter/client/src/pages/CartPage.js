@@ -16,7 +16,9 @@ const CartPage = () => {
 		return (
 			<div className='empty-cart section section-center'>
 				<h1>Your cart is empty...</h1>
-				<Link to='/products'>START SHOPPING</Link>
+				<Link to='/products' style={{ letterSpacing: '2px' }}>
+					START SHOPPING
+				</Link>
 			</div>
 		);
 	}
@@ -31,7 +33,7 @@ const CartPage = () => {
 						<div>Quantity</div>
 						<div>Subtotal</div>
 					</article>
-					<div className='separator dark'></div>
+					<div className='separator dark header'></div>
 					{cart.map((c) => {
 						return <CartItem key={c.id} {...c} />;
 					})}

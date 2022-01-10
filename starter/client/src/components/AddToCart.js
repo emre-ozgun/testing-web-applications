@@ -46,6 +46,7 @@ const AddToCart = ({ stock, available, idToBeAddedToCart }) => {
 			</div>
 			<button
 				className='add-to-cart-btn'
+				style={{ backgroundColor: 'rgb(0,140,140)', letterSpacing: '1px' }}
 				onClick={() => handleAddToCart(idToBeAddedToCart, cartAmount)}
 				disabled={!available && 'disabled'}
 			>

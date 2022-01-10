@@ -6,7 +6,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const PRODUCTS = [
+let PRODUCTS = [
 	{
 		id: 'aaa111',
 		url: 'https://picsum.photos/id/1008/400/300',
@@ -224,6 +224,32 @@ const auth = {
 	user: { email: 'testuser@gmail.com', password: 'test123' },
 	admin: { email: 'testadmin@gmail.com', password: 'admin123' },
 };
+
+// Placeorder
+app.get('/placeorder', (req, res) => {
+	const order = [];
+	cart.forEach((item) => {
+		order.push(item);
+	});
+
+	PRODUCTS = PRODUCTS.map((p) => {
+		const isProductInCart = order.find((o) => o.id === p.id);
+		if (isProductInCart) {
+			return { ...p, stock: p.stock - isProductInCart.amount };
+		} else {
+			return p;
+		}
+	});
+
+	placed_orders.push(order);
+	cart = [];
+
+	res.json({ orderStatus: true });
+});
+
+app.get('/orders/completed', (req, res) => {
+	res.json(placed_orders);
+});
 
 // Authenticate User
 
