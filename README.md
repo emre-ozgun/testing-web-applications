@@ -7,11 +7,11 @@ Including react testing library and cypress
 Requires [Node.js](https://nodejs.org/)  to run.
 
 1. Clone
-2. Navigate to client folder (../starter/client)
+2. Navigate to client directory (../starter/client)
 ```sh
 npm install && npm run
 ```
-3. Navigate to server folder (../starter/server)
+3. Navigate to server directory (../starter/server)
 ```sh
 node index
 ```
