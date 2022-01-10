@@ -15,3 +15,5 @@ npm install && npm run
 ```sh
 node index
 ```
+
+> USE: `email:testuser@gmail.com - password:test123` to login and place orders. (This is the only authenticated user)
