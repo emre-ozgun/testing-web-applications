@@ -2,7 +2,7 @@
 Including react testing library and cypress
 
 
-## Instructions
+## Instructions - Starting the E-Commerce Application
 
 Requires [Node.js](https://nodejs.org/)  to run.
 
