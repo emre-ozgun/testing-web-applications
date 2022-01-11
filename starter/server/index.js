@@ -40,8 +40,8 @@ let PRODUCTS = [
 		price: 8000,
 		description:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum repudiandae facilis dignissimos distinctio hic quae reprehenderit iure nam tempora corrupti incidunt laboriosam molestiae consequatur molestias minus neque, provident expedita, nihil ducimus eius animi! Aperiam quod, in exercitationem aliquam inventore a?',
-		stock: 25,
-		available: true,
+		stock: 0,
+		available: false,
 		company: 'ACraft',
 		stars: 3,
 		reviews: 16,
@@ -53,7 +53,7 @@ let PRODUCTS = [
 		price: 25000,
 		description:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum repudiandae facilis dignissimos distinctio hic quae reprehenderit iure nam tempora corrupti incidunt laboriosam molestiae consequatur molestias minus neque, provident expedita, nihil ducimus eius animi! Aperiam quod, in exercitationem aliquam inventore a?',
-		stock: 120,
+		stock: 9,
 		available: true,
 		company: 'VintAGE',
 		stars: 3.75,
