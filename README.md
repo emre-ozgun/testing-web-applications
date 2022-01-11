@@ -17,3 +17,6 @@ npm install && node index
 ```
 
 > USE: `email:testuser@gmail.com - password:test123` to login and place orders. (This is the only authenticated user)
+
+
+[![Cypress.io](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)](https://www.cypress.io/)
