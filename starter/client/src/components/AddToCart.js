@@ -41,7 +41,7 @@ const AddToCart = ({ stock, available, idToBeAddedToCart }) => {
 		<div className='add-to-cart'>
 			<div className='cart-toggle'>
 				<button onClick={decrementAmount}>-</button>
-				<span>{cartAmount}</span>
+				<span data-test='single-product-quantity'>{cartAmount}</span>
 				<button onClick={incrementAmount}>+</button>
 			</div>
 			<button

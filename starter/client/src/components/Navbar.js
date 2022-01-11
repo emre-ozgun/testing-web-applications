@@ -26,7 +26,11 @@ const Navbar = () => {
 				<div className='cta'>
 					<Link to='/cart'>
 						Cart (
-						<span className='cart-amount' style={{ color: 'rgb(0,140,140)' }}>
+						<span
+							className='cart-amount'
+							data-test='global-cart-counter'
+							style={{ color: 'rgb(0,140,140)' }}
+						>
 							{cartAmount}
 						</span>
 						)

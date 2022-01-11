@@ -22,7 +22,8 @@ const HomePage = () => {
 			<main className='landing section section-center'>
 				<section className='info'>
 					<h1 className='' ref={titleRef}>
-						Own your style with <br /> Lustro
+						Own your style with <br />
+						Lustro
 					</h1>
 					<p className='' ref={paragraphRef}>
 						Pour-over 3 wolf moon vegan disrupt, skateboard af tofu austin.

@@ -14,7 +14,7 @@ const CartTotal = ({ cart }) => {
 				<h3>{formatPrice(calculateCartTotal(cart))}</h3>
 			</div>
 			{isAuthUser ? (
-				<Link to='/checkout' style={{ backgroundColor: 'rgb(0,140,140)' }}>
+				<Link to='/checkout' data-test='checkout-button'>
 					CHECKOUT
 				</Link>
 			) : (

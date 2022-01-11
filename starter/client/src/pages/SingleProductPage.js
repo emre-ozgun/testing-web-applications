@@ -73,7 +73,7 @@ const SingleProductPage = () => {
 					<img src={url} alt={name} />
 				</article>
 				<article className='single-product-info'>
-					<h1>{name}</h1>
+					<h1 data-test='single-product-name'>{name}</h1>
 					<h2>{formatPrice(price)}</h2>
 					<h5>
 						{Math.floor((stars / 5) * 100)}% - ({reviews} reviews)
@@ -85,9 +85,9 @@ const SingleProductPage = () => {
 					</div>
 					<div className='single-footer-info'>
 						<h6>In Stock: </h6>
-						<p>{available ? 'Available' : 'Out of Stock'}</p>
+						<p>{stock > 0 ? 'Available' : 'Out of Stock'}</p>
 					</div>
-					{available && (
+					{available && stock > 0 && (
 						<>
 							<div className='separator'></div>
 							<AddToCart

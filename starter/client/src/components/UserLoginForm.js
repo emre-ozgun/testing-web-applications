@@ -44,7 +44,13 @@ const UserLoginForm = () => {
 
 	return (
 		<section className='section section-center user-login-page'>
-			<form onSubmit={(e) => handleUserPre(e)} className='user-login-form'>
+			<form
+				onSubmit={(e) => handleUserPre(e)}
+				className='user-login-form'
+				id='user-login-form'
+				role='user-login-form'
+				name='user-login-form'
+			>
 				{loginError && (
 					<div className='form-control login-error' style={{ color: 'red' }}>
 						{loginError}
