@@ -17,7 +17,7 @@ npm install && npm start
 npm install && node index
 ```
 
-## TO RUN TESTS
+## To Run Tests
 
 4. Navigate to client directory (../starter/client)
 ```sh
