@@ -556,7 +556,7 @@ nav > div > a {
 	display: inline-flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: start;
+	justify-content: flex-start;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	gap: 1rem;
 	-webkit-transform: scale(1.2);
