@@ -9,6 +9,7 @@ const CartItem = ({ url, name, price, amount, id, stock }) => {
 
 	useEffect(() => {
 		updateCartFromCart(id, cartQuantity);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [cartQuantity]);
 
 	// decrementCartFromCart

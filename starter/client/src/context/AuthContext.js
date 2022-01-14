@@ -10,8 +10,6 @@ export const AuthContext = ({ children }) => {
 
 	const [loginError, setLoginError] = useState('');
 
-	const [isAuthAdmin, setIsAuthAdmin] = useState(false);
-
 	const [isLoginLoading, setIsLoginLoading] = useState(false);
 
 	// must be await -> response is true or false -> validate the user in backend!

@@ -23,6 +23,7 @@ const UserLoginForm = () => {
 
 			return () => clearTimeout(errorTimeOut);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [loginError]);
 
 	if (isAuthUser) {
@@ -48,7 +49,6 @@ const UserLoginForm = () => {
 				onSubmit={(e) => handleUserPre(e)}
 				className='user-login-form'
 				id='user-login-form'
-				role='user-login-form'
 				name='user-login-form'
 			>
 				{loginError && (

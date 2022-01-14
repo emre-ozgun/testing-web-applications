@@ -10,6 +10,7 @@ const CartPage = () => {
 
 	useEffect(() => {
 		setCartChangeFlag(false);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	if (!cart.length) {
