@@ -7,6 +7,7 @@
 Requires [Node.js](https://nodejs.org/)  to run.
 
 1. Clone
+
 2. Navigate to client directory (../starter/client)
 ```sh
 npm install && npm start
@@ -15,6 +16,14 @@ npm install && npm start
 ```sh
 npm install && node index
 ```
+
+## TO RUN TESTS
+
+4. Navigate to client directory (../starter/client)
+```sh
+npm run cypress:open
+```
+
 
 > USE: `email:testuser@gmail.com - password:test123` to login and place orders. (This is the only authenticated user)
 
