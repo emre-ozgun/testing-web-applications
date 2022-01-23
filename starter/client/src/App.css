@@ -54,6 +54,12 @@ nav {
 	justify-self: center;
 }
 
+@media screen and (max-width: 400px) {
+	.nav-links > a:first-child {
+		display: none;
+	}
+}
+
 nav > div > a {
 	padding: 1rem;
 }
@@ -232,6 +238,22 @@ nav > div > a {
 .image > img.active {
 	height: 700px;
 	opacity: 1;
+}
+
+@media screen and (max-width: 678px) {
+	.landing {
+		flex-direction: column;
+		width: 100%;
+	}
+	.landing .image {
+		margin-top: 2rem;
+		margin-right: auto;
+		width: 100%;
+	}
+	.landing .image > img {
+		height: 400px;
+		width: 100%;
+	}
 }
 
 /* end of landing page */
